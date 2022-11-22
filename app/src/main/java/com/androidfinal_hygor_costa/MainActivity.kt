@@ -9,15 +9,30 @@ import com.androidfinal_hygor_costa.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
 
-    private lateinit var bilding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
+
+    private var searchString = ""
+
+    private val minPage = 1
+    private val maxPage = 100
+    private val stratPage = 30
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_main)
 
-        bilding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(bilding.root)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.searchButton.setOnClickListener {
+
+        }
+
+        binding.perPageNumberPicker.minValue = minPage
+        binding.perPageNumberPicker.maxValue = maxPage
+        binding.perPageNumberPicker.value = stratPage
 
     }
 
