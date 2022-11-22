@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">AndroidFinal_Hygor_Costa</string>
+
+    <string name="search_button_text">Search</string>
+    <string name="search_user_hint">Search user</string>
+    <string name="min_repos">min. # repos</string>
+    <string name="followers">followers</string>
+    <string name="page_size">page size</string>
+    <string name="min_followers">min. # followers</string>
+    <string name="repos">repos</string>
+
 </resources>
