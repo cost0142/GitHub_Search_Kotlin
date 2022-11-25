@@ -9,4 +9,6 @@
     <string name="min_followers">min. # followers</string>
     <string name="repos">repos</string>
 
+    <string name="menu_about">About</string>
+
 </resources>

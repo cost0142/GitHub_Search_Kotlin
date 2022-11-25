@@ -1,8 +1,15 @@
 package com.androidfinal_hygor_costa
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Message
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.MotionEvent
+import android.view.accessibility.AccessibilityEvent
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.androidfinal_hygor_costa.databinding.ActivityMainBinding
 
@@ -15,8 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     private val minPage = 1
     private val maxPage = 100
-    private val stratPage = 30
-
+    private val startPage = 30
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,15 +38,53 @@ class MainActivity : AppCompatActivity() {
 
         binding.perPageNumberPicker.minValue = minPage
         binding.perPageNumberPicker.maxValue = maxPage
-        binding.perPageNumberPicker.value = stratPage
+        binding.perPageNumberPicker.value = startPage
 
     }
 
+    // region: Options Menu
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
-    // region Toast Function
-    fun toast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+
+
+        val inflater = MenuInflater(this)
+        inflater.inflate(R.menu.main_menu, menu)
+
+        return super.onCreateOptionsMenu(menu)
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId){
+            R.id.menu_about -> {
+                toast("pls., touch me")
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+
+    }
+
     // endregion
+
+    // region keyboard - hide the soft keyboard when no input
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+
+        currentFocus?.let {
+            val inputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(it.windowToken, 0)
+        }
+
+        return super.dispatchTouchEvent(ev)
+    }
+// endregion
+
+// region Toast Function
+fun toast(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+}
+// endregion
 
 }
