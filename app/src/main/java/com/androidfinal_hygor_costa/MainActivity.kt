@@ -1,6 +1,7 @@
 package com.androidfinal_hygor_costa
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Message
@@ -57,10 +58,12 @@ class MainActivity : AppCompatActivity() {
 
         when (item.itemId){
             R.id.menu_about -> {
-                toast("pls., touch me")
+           val intent = Intent(this, AboutActivity::class.java)
+                startActivity(intent)
                 return true
             }
         }
+
 
         return super.onOptionsItemSelected(item)
 

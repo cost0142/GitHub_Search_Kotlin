@@ -17,6 +17,8 @@
         tools:targetApi="31">
         <activity
             android:name=".WebViewActivity"
+            android:parentActivityName=".DetailsActivity"
+            android:launchMode="singleTop"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -24,6 +26,8 @@
         </activity>
         <activity
             android:name=".ResultsActivity"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -31,6 +35,8 @@
         </activity>
         <activity
             android:name=".DetailsActivity"
+            android:parentActivityName=".ResultsActivity"
+            android:launchMode="singleTop"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -38,6 +44,9 @@
         </activity>
         <activity
             android:name=".AboutActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity"
+            android:label="@string/menu_about"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -45,7 +54,10 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -57,5 +69,7 @@
                 android:value="" />
         </activity>
     </application>
+
+
 
 </manifest>
