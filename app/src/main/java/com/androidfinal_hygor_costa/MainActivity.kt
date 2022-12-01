@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
     private val maxPage = 100
     private val startPage = 30
 
+    private val baseUrl = "https://api.github.com/search/"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,12 +36,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.searchButton.setOnClickListener {
+            fetchJSONData()
 
         }
 
         binding.perPageNumberPicker.minValue = minPage
         binding.perPageNumberPicker.maxValue = maxPage
         binding.perPageNumberPicker.value = startPage
+
+    }
+
+    private fun fetchJSONData() {
 
     }
 
