@@ -11,4 +11,12 @@
 
     <string name="menu_about">About</string>
 
+    <string name="user_score">Score: %1$s</string>
+    <string name="user_login">Login: %1$s</string>
+    <string name="user_id">ID: %1$s</string>
+    <string name="image_description">Avatar</string>
+
+<!--    Key values do not translate-->
+    <string name="user_data_key">USER_DATA</string>
+
 </resources>
