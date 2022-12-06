@@ -66,7 +66,15 @@ class DetailsActivity : AppCompatActivity() {
                 runOnUiThread {
                     Picasso.get().load(result.avatar_url).into(binding.avatarImageView)
 
-                    binding.nameTextView.text =  getString(R.string.user_name, result?.name ?: "unknown")
+                    binding.nameTextView.text =  getString(R.string.user_name, result?.name ?: "Unknown")
+                    binding.locationTextView.text =  getString(R.string.user_location, result?.location ?: "Unknown")
+                    binding.companyTextView.text =  getString(R.string.user_company, result?.company ?: "Unknown")
+                    binding.followersTextView.text =  getString(R.string.user_followers, result?.followers ?: "Unknown")
+                    binding.publicGistTextView.text =  getString(R.string.user_public_gist, result?.public_gists ?: "Unknown")
+                    binding.publicReposTextView.text =  getString(R.string.user_public_repos, result?.public_repos ?: "Unknown")
+                    binding.lastUpdateTextView.text = getString(R.string.user_last_update, result?.updated_at?.substring(0, 10) ?: "Unknown")
+                    binding.accountCreatedTextView.text = getString(R.string.user_account_created, result?.created_at?.substring(0, 10) ?: "Unknown")
+
                 }
             }
         })
