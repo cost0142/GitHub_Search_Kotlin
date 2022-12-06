@@ -3,6 +3,7 @@ package com.androidfinal_hygor_costa
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidfinal_hygor_costa.databinding.ActivityResultsBinding
 
 class ResultsActivity : AppCompatActivity() {
@@ -26,6 +27,12 @@ class ResultsActivity : AppCompatActivity() {
         }
 
         supportActionBar?.title = "${data?.size} Results"
+
+        binding.recyclerViewMain.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewMain.adapter = data?.let {
+            CustomViewHolderClass.MainAdapter(it)
+        }
+
     }
 
 }

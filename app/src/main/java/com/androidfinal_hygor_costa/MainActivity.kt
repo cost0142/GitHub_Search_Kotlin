@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private var searchString = ""
-
     private val minPage = 1
     private val maxPage = 100
     private val startPage = 30

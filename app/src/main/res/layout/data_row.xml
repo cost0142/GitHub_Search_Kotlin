@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <!--Change below to CircleImageView-->
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView"
             android:layout_width="100dp"
             android:layout_height="100dp"

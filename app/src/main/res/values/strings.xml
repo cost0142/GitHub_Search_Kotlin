@@ -16,7 +16,14 @@
     <string name="user_id">ID: %1$s</string>
     <string name="image_description">Avatar</string>
 
+    <string name="user_name">Name: %1$s</string>
+    <string name="placeholder_url">url</string>
+
 <!--    Key values do not translate-->
     <string name="user_data_key">USER_DATA</string>
+    <string name="url_key">URL_KEY</string>
+    <string name="details_title_key">ACTIONBAR_TITLE</string>
+    <string name="details_url_key">DETAILS_URL</string>
+    <string name="details_html_url_key">DETAILS_HTML_URL</string>
 
 </resources>

@@ -37,7 +37,7 @@ events_url: "https://api.github.com/users/android/events{/privacy}",
 received_events_url: "https://api.github.com/users/android/received_events",
 type: "Organization",
 site_admin: false,
-score: 1
+score: 1.0
 }
 
 
