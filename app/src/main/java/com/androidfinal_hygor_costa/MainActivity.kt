@@ -4,14 +4,14 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Message
+
 import android.text.TextUtils
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
-import android.view.accessibility.AccessibilityEvent
+
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -28,8 +28,9 @@ class MainActivity : AppCompatActivity() {
     private val localStorage = LocalStorage()
     private lateinit var binding: ActivityMainBinding
 
-    private val internetConnection = InternetConnection(this)
+    private val internetConnection = InternetConnected(this)
 
+    @Suppress("UNUSED")
     private var searchString = ""
     private val minPage = 1
     private val maxPage = 100

@@ -4,7 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 
-class InternetConnection (private val context: Context){
+class InternetConnected (private val context: Context){
 
         val isConnected: Boolean
             get() = checkNetworkConnectivity()
