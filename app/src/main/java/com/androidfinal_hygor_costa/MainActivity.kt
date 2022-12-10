@@ -14,6 +14,7 @@ import android.view.View
 import android.view.accessibility.AccessibilityEvent
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.androidfinal_hygor_costa.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,8 +25,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
-
+    private val localStorage = LocalStorage()
     private lateinit var binding: ActivityMainBinding
+
+    private val internetConnection = InternetConnection(this)
 
     private var searchString = ""
     private val minPage = 1
@@ -39,19 +42,62 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_main)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        if (!internetConnection.isConnected) {
+            AlertDialog.Builder(this)
+                .setTitle(R.string.message_title)
+                .setMessage(R.string.message_text)
+                .setIcon(R.drawable.ic_baseline_network_check_24)
+                .setNegativeButton(R.string.quit){ _, _ ->
+                    finish()
+                }
+                .setCancelable(false)
+                .show()
+        } else {
 
-        binding.searchButton.setOnClickListener {
-            fetchJSONData()
 
+            binding = ActivityMainBinding.inflate(layoutInflater)
+            setContentView(binding.root)
+
+            binding.searchButton.setOnClickListener {
+                fetchJSONData()
+            }
+
+            binding.perPageNumberPicker.minValue = minPage
+            binding.perPageNumberPicker.maxValue = maxPage
+            binding.perPageNumberPicker.value = startPage
+
+            if (localStorage.contains(getString(R.string.repos_key))) {
+                binding.minReposEditText.setText(localStorage.getValueString(getString(R.string.repos_key)))
+                print(getString(R.string.repos_key))
+            } else {
+                binding.minReposEditText.setText("0")
+            }
+
+            if (localStorage.contains(getString(R.string.followers_key))) {
+                binding.minFollowersEditText.setText(localStorage.getValueString(getString(R.string.followers_key)))
+            } else {
+                binding.minFollowersEditText.setText("0")
+            }
+
+            if (localStorage.contains(getString(R.string.page_size_key))) {
+                binding.perPageNumberPicker.value =
+                    localStorage.getValueInt(getString(R.string.page_size_key))
+            } else {
+                binding.perPageNumberPicker.value = 0
+            }
         }
 
-        binding.perPageNumberPicker.minValue = minPage
-        binding.perPageNumberPicker.maxValue = maxPage
-        binding.perPageNumberPicker.value = startPage
-
     }
+
+    //region function onStop
+    override fun onStop() {
+        super.onStop()
+        localStorage.save(getString(R.string.repos_key), binding.minReposEditText.text.toString())
+        localStorage.save(getString(R.string.followers_key), binding.minFollowersEditText.text.toString())
+        localStorage.save(getString(R.string.page_size_key), binding.perPageNumberPicker.value.toString().toInt())
+    }
+
+    //endregion
 
     private fun fetchJSONData() {
 

@@ -98,8 +98,8 @@ class LocalStorage (context: Context = TheApp.context) {
     }
 
     @Suppress("UNUSED")
-    fun getValueInt(KEY_NAME: String, value: Int): Int {
-        return sharedPreferences.getInt(KEY_NAME, value)
+    fun getValueInt(KEY_NAME: String, ): Int {
+        return sharedPreferences.getInt(KEY_NAME, 0)
     }
 
     @Suppress("UNUSED")
